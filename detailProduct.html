@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartFarm - Marketplace Pertanian Modern</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS Custom -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-leaf me-2"></i>SkaFarm
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Produk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Produk Terlaris</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <input
+              class="form-control me-2 search-bar"
+              type="search"
+              placeholder="Cari produk pertanian..."
+            />
+            <button class="btn search-btn" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <ul class="navbar-nav ms-3">
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="fas fa-shopping-cart"></i
+              ></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Akun Saya</a></li>
+                <li><a class="dropdown-item" href="#">Pesanan</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">Keluar</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+          <li class="breadcrumb-item"><a href="#">Produk</a></li>
+          <li class="breadcrumb-item"><a href="#">Sayuran</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Bayam Segar
+          </li>
+        </ol>
+      </nav>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <img
+            src="./assets/bayam.jpg"
+            class="rounded mb-3 w-100"
+            style="object-fit: cover; max-height: 400px"
+            alt="Gambar Utama"
+          />
+          <div class="d-flex gap-1 overflow-auto" style="left: 9px; bottom: 0">
+            <img
+              src="./assets/bayam.jpg"
+              class="rounded border"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <img
+              src="./assets/cangkul.jpg"
+              class="rounded border"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <img
+              src="./assets/wortel.jpg"
+              class="rounded border"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h2 class="fw-bold">Bayam Segar (4KG)</h2>
+          <div class="d-flex align-items-center text-muted mb-3">
+            <span
+              ><i class="fas fa-star text-warning"></i> 4.8 (120 ulasan)</span
+            >
+            <span class="mx-2">•</span>
+            <span>500 terjual</span>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <h3 class="text-gray text-decoration-line-through me-3">
+              Rp 18.000
+            </h3>
+            <h3 class="text-success">Rp 14400</h3>
+            <span class="ms-2 badge-diskon">Diskon 20%</span>
+          </div>
+          <p class="text-muted">Harga per Kg</p>
+          <p class="product-location" style="font-size: 1rem">
+            <i class="fas fa-location-dot text-success"></i> Jakarta
+          </p>
+
+          <div class="d-flex align-items-center mb-3 g-3">
+            <i class="fas fa-truck-fast fa-lg text-primary"></i>
+            <span class="ms-2">Pengiriman Cepat</span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Jumlah:</label>
+            <div class="input-group mb-2" style="max-width: 140px">
+              <button class="btn btn-outline-secondary">-</button>
+              <input type="text" class="form-control text-center" value="1" />
+              <button class="btn btn-outline-secondary">+</button>
+            </div>
+            <p class="text-muted small">Stok: 20 tersedia</p>
+          </div>
+
+          <div class="d-flex gap-2 mb-4">
+            <button class="btn btn-outline-success w-100">+ Keranjang</button>
+            <button class="btn btn-success w-100">Beli Sekarang</button>
+            <button class="btn btn-outline-danger">
+              <i class="fas fa-heart"></i>
+            </button>
+            <button class="btn btn-outline-secondary">
+              <i class="fas fa-share"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs mt-5" id="tabProduk" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active"
+            data-bs-toggle="tab"
+            data-bs-target="#deskripsi"
+          >
+            Deskripsi
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            data-bs-toggle="tab"
+            data-bs-target="#spesifikasi"
+          >
+            Spesifikasi
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            data-bs-toggle="tab"
+            data-bs-target="#ulasan"
+          >
+            Ulasan (120)
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content p-3 bg-white border border-top-0">
+        <div class="tab-pane fade show active" id="deskripsi">
+          <p>
+            Bayam segar kualitas terbaik langsung dari petani lokal. Dipanen
+            setiap pagi dan dikemas dengan higienis untuk memastikan kesegaran
+            saat sampai ke tanganmu. Cocok untuk konsumsi harian, usaha kuliner,
+            atau jualan makanan sehat
+          </p>
+        </div>
+
+        <div class="tab-pane fade" id="spesifikasi">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Berat bersih: 4Kg</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Warna daun hijau cerah, Segar, tidak layu</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Bebas pestisida dan bahan kimia berbahaya </span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="ulasan">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h4>Ulasan Customer</h4>
+              <div class="d-flex align-items-center mb-3">
+                <div class="product-rating me-3">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>4.7 dari 5</span>
+              </div>
+              <p>1,245 total Ulasan</p>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-2">
+                <span class="me-2">5 Bintang</span>
+                <div class="progress" style="height: 10px">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <span class="me-2">4 Bintang</span>
+                <div class="progress" style="height: 10px">
+                  <div
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 15%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <span class="me-2">3 Bintang</span>
+                <div class="progress" style="height: 10px">
+                  <div
+                    class="progress-bar bg-warning"
+                    role="progressbar"
+                    style="width: 7%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-2">
+                <span class="me-2">2 Bintang</span>
+                <div class="progress" style="height: 10px">
+                  <div
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    style="width: 2%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="me-2">1 star</span>
+                <div class="progress" style="height: 10px">
+                  <div
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    style="width: 1%"
+                  ></div>
+                </div>
+              </div>
+              <button class="btn btn-success">Tambahkan Ulasan</button>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div
+                class="d-flex justify-content-between align-items-start mb-2"
+              >
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-user-circle fa-2x me-2 text-secondary"></i>
+                  <div>
+                    <strong>Rizki</strong>
+                    <div class="text-warning small">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <small class="text-muted">1 hari lalu</small>
+              </div>
+              <p class="mb-2">Bayamnya segar dan berkualitas</p>
+              <img
+                src="./assets/bayam.jpg"
+                style="width: 100px; height: auto"
+                alt="Foto Ulasan"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <h4 class="mb-3">Produk Terkait</h4>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+          <div class="col">
+            <div
+              class="card h-100 border-success text-center shadow-sm hover-shadow transition"
+            >
+              <img
+                src="./assets/cangkul.jpg"
+                class="card-img-top"
+                alt="Mangga"
+                style="height: 150px; object-fit: cover"
+              />
+              <div class="card-body">
+                <h6 class="card-title fw-semibold text-dark">
+                  Cangkul
+                </h6>
+                <span
+                  class="badge bg-success-subtle text-success fw-semibold mb-2"
+                  >Alat Pembantu</span
+                >
+                <p class="fw-bold text-success mb-1">
+                  Rp 35.000
+                  <span
+                    class="text-muted text-decoration-line-through small ms-1"
+                    >Rp 17.500</span
+                  >
+                </p>
+                <p class="text-muted small mb-1">Stok: 240 | Terjual: 590</p>
+                <div class="text-warning small mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="text-dark ms-1">(178)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="card h-100 border-success text-center shadow-sm hover-shadow transition"
+            >
+              <img
+                src="./assets/sawi.jpg"
+                class="card-img-top"
+                alt="Mangga"
+                style="height: 150px; object-fit: cover"
+              />
+              <div class="card-body">
+                <h6 class="card-title fw-semibold text-dark">
+                  Sawi Segar
+                </h6>
+                <span
+                  class="badge bg-success-subtle text-success fw-semibold mb-2"
+                  >Sayuran</span
+                >
+                <p class="fw-bold text-success mb-1">
+                  Rp 35.000
+                  <span
+                    class="text-muted text-decoration-line-through small ms-1"
+                    >Rp 17.500</span
+                  >
+                </p>
+                <p class="text-muted small mb-1">Stok: 240 | Terjual: 590</p>
+                <div class="text-warning small mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="text-dark ms-1">(178)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="card h-100 border-success text-center shadow-sm hover-shadow transition"
+            >
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28303f49-a04b-4ffd-b8cc-71c0fcb44a8e.png"
+                class="card-img-top"
+                alt="Mangga"
+                style="height: 150px; object-fit: cover"
+              />
+              <div class="card-body">
+                <h6 class="card-title fw-semibold text-dark">
+                  Beras Premium
+                </h6>
+                <span
+                  class="badge bg-success-subtle text-success fw-semibold mb-2"
+                  >Bahan Pokok</span
+                >
+                <p class="fw-bold text-success mb-1">
+                  Rp 35.000
+                  <span
+                    class="text-muted text-decoration-line-through small ms-1"
+                    >Rp 17.500</span
+                  >
+                </p>
+                <p class="text-muted small mb-1">Stok: 240 | Terjual: 590</p>
+                <div class="text-warning small mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="text-dark ms-1">(178)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="card h-100 border-success text-center shadow-sm hover-shadow transition"
+            >
+              <img
+                src="./assets/wortel.jpg"
+                class="card-img-top"
+                alt="Mangga"
+                style="height: 150px; object-fit: cover"
+              />
+              <div class="card-body">
+                <h6 class="card-title fw-semibold text-dark">
+                  Wortel
+                </h6>
+                <span
+                  class="badge bg-success-subtle text-success fw-semibold mb-2"
+                  >Sayuran</span
+                >
+                <p class="fw-bold text-success mb-1">
+                  Rp 35.000
+                  <span
+                    class="text-muted text-decoration-line-through small ms-1"
+                    >Rp 17.500</span
+                  >
+                </p>
+                <p class="text-muted small mb-1">Stok: 240 | Terjual: 590</p>
+                <div class="text-warning small mb-2">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="text-dark ms-1">(178)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="footer-title">SkaFarm</h5>
+          <p>
+            Marketplace pertanian modern yang menghubungkan petani dengan
+            konsumen secara langsung.
+          </p>
+          <div class="mt-3">
+            <a href="#" class="text-decoration-none text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-decoration-none text-white me-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-decoration-none text-white me-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-decoration-none text-white"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="footer-title">Tentang Kami</h5>
+          <a href="#" class="footer-link">Profil Perusahaan</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Karir</a>
+          <a href="#" class="footer-link">Kebijakan Privasi</a>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="footer-title">Beli</h5>
+          <a href="#" class="footer-link">Kategori Produk</a>
+          <a href="#" class="footer-link">Promo</a>
+          <a href="#" class="footer-link">Produk Baru</a>
+          <a href="#" class="footer-link">Petani Terdekat</a>
+        </div>
+        <div class="col-md-3">
+          <h5 class="footer-title">Hubungi Kami</h5>
+          <a href="#" class="footer-link"><i class="fas fa-phone me-2"></i> 1500 123</a>
+          <a href="#" class="footer-link"><i class="fas fa-envelope me-2"></i> help@skafarm.id</a>
+          <a href="#" class="footer-link"><i class="fas fa-map-marker-alt me-2"></i> Jakarta, Indonesia</a>
+        </div>
+      </div>
+      <hr class="my-4 bg-secondary" />
+      <div class="row">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <p class="mb-0">© 2025 SkaFarm All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </body>
+</html>
