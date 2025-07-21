@@ -39,7 +39,7 @@ body {
 /* Hero Section */
 .hero-section {
   background: linear-gradient(rgba(58, 125, 68, 0.8), rgba(58, 125, 68, 0.8)),
-    url("https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5cd08745-7494-4032-8e8b-23e0f0e89cfe.png")
+    url("../assets/background-sawah.jpg")
       center/cover no-repeat;
   height: 400px;
   color: white;
@@ -84,10 +84,6 @@ body {
 
 .text-sm {
   font-size: 0.75rem;
-
-  &.text-gray {
-    color: gray;
-  }
 }
 
 /* Category Section */
@@ -134,13 +130,43 @@ body {
   color: white;
 }
 
+
+/* Handle Scroll */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.scroll-container {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.scroll-container > .card {
+  scroll-snap-align: start;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.wrapper-promo {
+  position: relative;
+}
+
+.wrapper-promo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(to left, #d1e7dd, rgba(209, 231, 221, 0));
+  z-index: 10;
+  pointer-events: none;
+}
+
 
 /* Related Product */
 .related-produk {
