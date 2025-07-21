@@ -52,7 +52,7 @@ const produkUnggulan = [
 const produkPetani = [
   {
     id: 5,
-    nama: "Beras Premium 5kg",
+    nama: "Beras Premium",
     harga: 120000,
     lokasi: "Solo",
     stok: 1000,
@@ -61,7 +61,7 @@ const produkPetani = [
     ulasan: 415,
     kategori: "Bahan Pokok",
     gambar:
-      "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28303f49-a04b-4ffd-b8cc-71c0fcb44a8e.png",
+      "./assets/images-removebg-preview.png",
   },
   {
     id: 6,
@@ -101,7 +101,7 @@ const produkPetani = [
   },
 ];
 
-const semuaProduk = [...produkUnggulan, ...produkPetani]
+const semuaProduk = [...produkUnggulan, ...produkPetani];
 
 function tampilkanBintang(rating) {
   let star = "";
@@ -126,9 +126,11 @@ const formatRupiah = new Intl.NumberFormat("id-ID", {
 $(document).ready(function () {
   const containerProdukUnggulan = $("#produkUnggulan");
   const containerProdukPetani = $("#produkPetani");
+  const containerSemuaProduk = $("#semuaProduk");
+
   produkUnggulan.map((produk) => {
     const cardProdukUnggulan = `
-        <div class="col-6 col-md-4 col-lg-3" data-produk-id="${produk.id}">
+        <div class="col-6 col-md-4 col-lg-3">
           <div class="card product-card h-85 shadow">
             <div class="w-100 relative">
             <img
@@ -175,7 +177,9 @@ $(document).ready(function () {
                   <h5 class="card-title product-title">
                  ${produk.nama}
                   </h5>
-                  <p class="product-price">${formatRupiah.format(produk.harga)}</p>
+                  <p class="product-price">${formatRupiah.format(
+                    produk.harga
+                  )}</p>
                   <p class="product-location"><i class="fa-solid fa-location-dot text-success"></i>${
                     produk.lokasi
                   }</p>
@@ -192,5 +196,36 @@ $(document).ready(function () {
             `;
     containerProdukPetani.append(cardProdukPetani);
   });
-  console.log(semuaProduk)
+  semuaProduk.forEach((produk) => {
+    const card = `
+      <div class="col-6 col-md-4 col-lg-3" data-produk-id="${produk.id}">
+          <div class="card product-card h-85 shadow">
+            <div class="w-100 relative">
+            <img
+              src="${produk.gambar}"
+              class="card-img-top product-img"
+              alt="Traktor" />
+               <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
+                 produk.kategori
+               }</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title product-title">${produk.nama}</h5>
+              <p class="product-price">${formatRupiah.format(produk.harga)}</p>
+              <p class="product-location"><i class="fa-solid fa-location-dot text-success"></i>
+                ${produk.lokasi}
+              </p>
+              <p class="product-rating">
+                ${tampilkanBintang(produk.rating)}
+                <span class="ms-1">(${produk.ulasan})</span>
+              <p class="text-sm text-gray">Stok: ${produk.stok} | Terjual: ${
+      produk.terjual
+    }</p>
+              </p>
+            </div>
+          </div>
+          </div>
+          `;
+    containerSemuaProduk.append(card);
+  });
 });

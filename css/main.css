@@ -11,7 +11,7 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Navbar Customization */
+/* Navbar */
 .navbar {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -142,20 +142,31 @@ body {
   scrollbar-width: none;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero-section {
-    height: 300px;
-  }
-
-  .product-img {
-    height: 150px;
-  }
+/* Related Product */
+.related-produk {
+  height: 150px; 
+  object-fit: contain;
 }
 
 /* Others */
-.text-yellow {
-  color: yellow;
+.image-utama {
+  object-fit: contain; 
+  max-height: 400px
+}
+
+.image-thumbnail-container {
+  left: 9px; 
+  bottom: 0;
+}
+
+.image-thumbnail {
+  width: 80px; 
+  height: 80px; 
+  object-fit: cover
+}
+
+.text-size-1 {
+  font-size: 1rem;
 }
 
 .badge-diskon {
@@ -169,4 +180,29 @@ body {
 
 .text-gray {
   color: gray;
+}
+
+@media screen and (max-width: 768px) {
+  .md\:fs-80 {
+    font-size: 90%;
+  }
+  .hero-section {
+    height: 300px;
+  }
+
+  .product-img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 1080px){
+  .lg\:fs-normal {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .sm\:fs-70 {
+    font-size: 80%;
+  }
 }

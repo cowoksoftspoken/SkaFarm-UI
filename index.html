@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="sm:fs-70 md:fs-80 lg:fs-normal">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <i class="fas fa-leaf me-2"></i>SkaFarm
         </a>
         <button
@@ -43,16 +43,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Beranda</a>
+              <a class="nav-link" href="#beranda">Beranda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Produk</a>
+              <a class="nav-link" href="#produk">Produk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="#promo">Promo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Tentang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Produk Terlaris</a>
+              <a class="nav-link" href="#petani">Produk Terlaris</a>
             </li>
           </ul>
           <div class="d-flex">
@@ -99,7 +102,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section d-flex align-items-center">
+    <section class="hero-section d-flex align-items-center" id="beranda">
       <div class="container text-center">
         <h1 class="hero-title mb-4">
           Solusi Modern untuk Pertanian Masa Depan
@@ -174,8 +177,24 @@
       </div>
     </section>
 
+    <!-- Semua Produk -->
+    <section class="py-5" id="produk">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-12 d-flex justify-content-between align-items-center">
+            <h3 class="fw-bold">Temukan Kebutuhan Kamu</h3>
+            <a href="#" class="btn text-decoration-none" style="font-size: 1.5rem;" title="Filter">
+              <i class="fas fa-filter"></i>
+            </a>
+          </div>
+        </div>
+        <div class="row g-4" id="semuaProduk">
+        </div>
+      </div>
+    </section>
+
     <!-- Produk Flash Sale -->
-    <section class="container py-5">
+    <section class="container py-5" id="promo">
       <div
         class="bg-success-subtle rounded p-4 d-flex flex-column flex-md-row gap-4"
       >
@@ -194,7 +213,7 @@
               style="width: 15rem"
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28303f49-a04b-4ffd-b8cc-71c0fcb44a8e.png"
+                src="./assets/images-removebg-preview.png"
                 class="card-img-top"
                 loading="lazy"
                 alt="Beras Organik"
@@ -202,7 +221,7 @@
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
-                  Beras Oragnik Premium
+                  Beras Premium
                 </h6>
                 <span
                   class="badge bg-success-subtle text-success fw-semibold mb-2"
@@ -232,7 +251,7 @@
               style="width: 15rem"
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1312017-2ad6-4470-b5af-c9f946f390e9.png"
+                src="./assets/cangkul.jpg"
                 class="card-img-top"
                 alt="Traktor"
                 loading="lazy"
@@ -270,7 +289,7 @@
               style="width: 15rem"
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/924b88ea-2198-466e-92c1-e63aaa755ba1.png"
+                src="./assets/sawi.jpg"
                 class="card-img-top"
                 alt="Sayuran"
                 loading="lazy"
@@ -308,19 +327,19 @@
               style="width: 15rem"
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28303f49-a04b-4ffd-b8cc-71c0fcb44a8e.png"
+                src="./assets/eAUGlB97yIsfbMBZNlXA.jpg"
                 class="card-img-top"
-                alt="Mangga"
+                alt="Beras"
                 loading="lazy"
                 style="height: 150px; width: 100%; object-fit: cover"
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
-                  Mangga Harum Manis
+                  Beras Putih Original
                 </h6>
                 <span
                   class="badge bg-success-subtle text-success fw-semibold mb-2"
-                  >Buah-Buahan</span
+                  >Bahan Pokok</span
                 >
                 <p class="fw-bold text-success mb-1">
                   Rp 35.000
@@ -346,11 +365,11 @@
     </section>
 
     <!-- Produk Petani -->
-    <section class="py-5">
+    <section class="py-5" id="Petani">
       <div class="container">
         <div class="row mb-4">
           <div class="col-12 d-flex justify-content-between align-items-center">
-            <h3 class="fw-bold">Hasil Panen Langsung Petani</h3>
+            <h3 class="fw-bold">Produk Terbaik dan Terlaris</h3>
             <a href="#" class="btn btn-link text-decoration-none"
               >Lihat Semua</a
             >

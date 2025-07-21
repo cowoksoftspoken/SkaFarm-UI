@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="sm:fs-70 md:fs-80 lg:fs-normal">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
           <i class="fas fa-leaf me-2"></i>SkaFarm
         </a>
         <button
@@ -97,7 +97,7 @@
       </div>
     </nav>
 
-    <main class="container py-5">
+    <main class="container py-3">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Beranda</a></li>
@@ -112,26 +112,22 @@
       <div class="row g-3">
         <div class="col-md-6">
           <img
-            src="./assets/bayam.jpg"
-            class="rounded mb-3 w-100"
-            style="object-fit: cover; max-height: 400px"
+            src="https://akcdn.detik.net.id/visual/2018/07/11/cc01493c-6a04-4bea-b33d-3be0086c9f09_169.jpeg?w=650"
+            class="rounded mb-3 w-100 image-utama"
             alt="Gambar Utama"
           />
-          <div class="d-flex gap-1 overflow-auto" style="left: 9px; bottom: 0">
+          <div class="d-flex gap-1 overflow-auto image-thumbnail-container">
             <img
               src="./assets/bayam.jpg"
-              class="rounded border"
-              style="width: 80px; height: 80px; object-fit: cover"
+              class="rounded border image-thumbnail"
             />
             <img
               src="./assets/cangkul.jpg"
-              class="rounded border"
-              style="width: 80px; height: 80px; object-fit: cover"
+              class="rounded border image-thumbnail"
             />
             <img
               src="./assets/wortel.jpg"
-              class="rounded border"
-              style="width: 80px; height: 80px; object-fit: cover"
+              class="rounded border image-thumbnail"
             />
           </div>
         </div>
@@ -151,26 +147,45 @@
               Rp 18.000
             </h3>
             <h3 class="text-success">Rp 14400</h3>
-            <span class="ms-2 badge-diskon">Diskon 20%</span>
+            <span class="ms-2 mb-2 badge-diskon">Diskon 20%</span>
           </div>
-          <p class="text-muted">Harga per Kg</p>
-          <p class="product-location" style="font-size: 1rem">
+          <p class="text-muted">Harga per 4 Kg</p>
+          <p class="product-location text-size-1">
             <i class="fas fa-location-dot text-success"></i> Jakarta
           </p>
 
           <div class="d-flex align-items-center mb-3 g-3">
-            <i class="fas fa-truck-fast fa-lg text-primary"></i>
-            <span class="ms-2">Pengiriman Cepat</span>
+            <i class="fas fa-truck-fast fa-lg text-success"></i>
+            <span class="ms-2">Pengiriman Cepat dan Aman</span>
+          </div>
+
+          <div class="d-flex align-items-center mb-3">
+            <div class="d-flex me-3">
+              <input type="checkbox" class="me-2" value="250gr" />
+              250gr
+            </div>
+            <div class="d-flex me-3">
+              <input type="checkbox" class="me-2" value="250gr" />
+              500gr
+            </div>
+            <div class="d-flex me-3">
+              <input type="checkbox" class="me-2" value="250gr" />
+              1kg
+            </div>
+            <div class="d-flex me-3">
+              <input type="checkbox" class="me-2" value="250gr" />
+              4kg
+            </div>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Jumlah:</label>
             <div class="input-group mb-2" style="max-width: 140px">
-              <button class="btn btn-outline-secondary">-</button>
-              <input type="text" class="form-control text-center" value="1" />
-              <button class="btn btn-outline-secondary">+</button>
+              <button class="btn btn-outline-secondary" id="mines">-</button>
+              <input type="text" class="form-control text-center" id="inputProduk" value="1" />
+              <button class="btn btn-outline-secondary" id="plus">+</button>
             </div>
-            <p class="text-muted small">Stok: 20 tersedia</p>
+            <p class="text-muted small" id="stok">Stok: 20 tersedia</p>
           </div>
 
           <div class="d-flex gap-2 mb-4">
@@ -298,7 +313,7 @@
                 </div>
               </div>
               <div class="mb-3">
-                <span class="me-2">1 star</span>
+                <span class="me-2">1 Bintang</span>
                 <div class="progress" style="height: 10px">
                   <div
                     class="progress-bar bg-danger"
@@ -350,9 +365,8 @@
             >
               <img
                 src="./assets/cangkul.jpg"
-                class="card-img-top"
+                class="card-img-top related-produk"
                 alt="Mangga"
-                style="height: 150px; object-fit: cover"
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
@@ -387,9 +401,8 @@
             >
               <img
                 src="./assets/sawi.jpg"
-                class="card-img-top"
+                class="card-img-top related-produk"
                 alt="Mangga"
-                style="height: 150px; object-fit: cover"
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
@@ -423,10 +436,9 @@
               class="card h-100 border-success text-center shadow-sm hover-shadow transition"
             >
               <img
-                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28303f49-a04b-4ffd-b8cc-71c0fcb44a8e.png"
-                class="card-img-top"
+                src="./assets/images-removebg-preview.png"
+                class="card-img-top related-produk"
                 alt="Mangga"
-                style="height: 150px; object-fit: cover"
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
@@ -461,9 +473,8 @@
             >
               <img
                 src="./assets/wortel.jpg"
-                class="card-img-top"
+                class="card-img-top related-produk"
                 alt="Mangga"
-                style="height: 150px; object-fit: cover"
               />
               <div class="card-body">
                 <h6 class="card-title fw-semibold text-dark">
