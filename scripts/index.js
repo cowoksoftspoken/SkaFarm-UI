@@ -102,6 +102,8 @@ const produkPetani = [
 ];
 
 const semuaProduk = [...produkUnggulan, ...produkPetani];
+const searchPopup = document.getElementById("searchPopup")
+const popupRefer = document.getElementById("popupRefer")
 
 function tampilkanBintang(rating) {
   let star = "";
@@ -123,6 +125,10 @@ const formatRupiah = new Intl.NumberFormat("id-ID", {
   minimumFractionDigits: 0,
 });
 
+searchPopup.addEventListener("click", function(){
+   popupRefer.classList.toggle("d-none")
+})
+
 $(document).ready(function () {
   const containerProdukUnggulan = $("#produkUnggulan");
   const containerProdukPetani = $("#produkPetani");
@@ -135,8 +141,9 @@ $(document).ready(function () {
             <div class="w-100 relative">
             <img
               src="${produk.gambar}"
-              class="card-img-top product-img"
-              alt="Traktor" />
+              class="card-img-top product-img" 
+              alt="${produk.nama}"
+              />
                <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
                  produk.kategori
                }</span>
@@ -168,14 +175,14 @@ $(document).ready(function () {
                   <img
                   src="${produk.gambar}"
                   class="card-img-top product-img"
-                  alt="Beras organik" />
+                  alt="${produk.nama}" />
                   <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
                     produk.kategori
                   }</span>
                 </div>
                 <div class="card-body">
                   <h5 class="card-title product-title">
-                 ${produk.nama}
+                 ${produk.nama} 
                   </h5>
                   <p class="product-price">${formatRupiah.format(
                     produk.harga
@@ -204,7 +211,7 @@ $(document).ready(function () {
             <img
               src="${produk.gambar}"
               class="card-img-top product-img"
-              alt="Traktor" />
+              alt="${produk.nama}" />
                <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
                  produk.kategori
                }</span>
@@ -229,3 +236,4 @@ $(document).ready(function () {
     containerSemuaProduk.append(card);
   });
 });
+

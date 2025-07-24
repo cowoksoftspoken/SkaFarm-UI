@@ -21,19 +21,45 @@ body {
   color: var(--primary);
 }
 
-.nav-link {
-  font-weight: 500;
-}
-
 .search-bar {
   border-radius: 20px;
   border: 1px solid var(--secondary);
+}
+
+.search-btn-mobile {
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.tail {
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1.73rem solid var(--light); 
+  position: absolute;
+  top: 100%; 
+  right: 5rem; 
+  z-index: 998;
+}
+
+#popupRefer {
+  z-index: 90;
 }
 
 .search-btn {
   border-radius: 20px;
   background-color: var(--primary);
   color: white;
+}
+
+.search-popup {
+  width: 90%;
+  margin: 1rem .99rem;
+  padding: 1rem;
+  background: var(--light);
+  border-radius: 5px;
 }
 
 /* Hero Section */

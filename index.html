@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartFarm - Marketplace Pertanian Modern</title>
+  <title>SkaFarm - Marketplace Pertanian Modern</title>
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Font Awesome -->
@@ -26,9 +26,14 @@
       <a class="navbar-brand" href="index.html">
         <i class="fas fa-leaf me-2"></i>SkaFarm
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="d-flex align-items-center d-lg-none">
+        <button class="btn me-2" id="searchPopup" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -41,24 +46,47 @@
             <a class="nav-link" href="#promo">Promo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tentang</a>
+            <a class="nav-link" href="#tentangKami">Tentang</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#Petani">Produk Terlaris</a>
+            <a class="nav-link" href="#terlaris">Produk Terlaris</a>
           </li>
+          <div class="d-flex align-items-center g-2 d-lg-none">
+            <li class="nav-link me-2">
+              <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+            </li>
+            <li class="nav-link me-2">
+              <a class="nav-link" href="#">
+                <i class="fas fa-shopping-cart"></i>
+              </a>
+            </li>
+            <li class="nav-link me-2 dropdown position-relative">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-user-circle"></i>
+              </a>
+              <ul class="dropdown-menu position-absolute dropdown-menu-start">
+                <li><a class="dropdown-item" href="#">Akun Saya</a></li>
+                <li><a class="dropdown-item" href="#">Pesanan</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">Keluar</a></li>
+          </div>
         </ul>
-        <div class="d-flex">
+        <div class="d-lg-flex d-none">
           <input class="form-control me-2 search-bar" type="search" placeholder="Cari produk pertanian..." />
           <button class="btn search-btn" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </div>
-        <ul class="navbar-nav ms-3">
+        <ul class="navbar-nav d-none d-lg-flex ms-3">
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a class="nav-link" href="#">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -77,6 +105,17 @@
       </div>
     </div>
   </nav>
+
+  <div id="popupRefer" class="position-fixed w-100" class="d-none">
+    <div class="tail"></div>
+    <div class="position-absolute search-popup align-items-center shadow d-flex">
+      <input class="form-control me-2 search-bar" type="search" name="searchInput"
+        placeholder="Cari produk pertanian..." />
+      <button class="btn search-btn search-btn-hover" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero-section d-flex align-items-center" id="beranda">
@@ -262,7 +301,7 @@
               style="height: 150px; width: 100%; object-fit: cover" />
             <div class="card-body">
               <h6 class="card-title fw-semibold text-dark">
-                Traktor Mini Modern
+                Cangkul Kecil
               </h6>
               <span class="badge bg-success-subtle text-success fw-semibold mb-2">Alat Pembantu</span>
               <p class="fw-bold text-success mb-1">
@@ -286,7 +325,7 @@
               style="height: 150px; width: 100%; object-fit: cover" />
             <div class="card-body">
               <h6 class="card-title fw-semibold text-dark">
-                Paket Sayuran Organik
+                Paket Sayuran
               </h6>
               <span class="badge bg-success-subtle text-success fw-semibold mb-2">Sayuran</span>
               <p class="fw-bold text-success mb-1">
@@ -335,7 +374,7 @@
   </section>
 
   <!-- Produk Petani -->
-  <section class="py-5" id="Petani">
+  <section class="py-5" id="terlaris">
     <div class="container">
       <div class="row mb-4">
         <div class="col-12 d-flex justify-content-between align-items-center">
