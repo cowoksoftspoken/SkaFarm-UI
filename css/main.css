@@ -45,7 +45,15 @@ body {
 }
 
 #popupRefer {
-  z-index: 90;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#popupRefer.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .search-btn {
@@ -233,6 +241,17 @@ body {
 .text-gray {
   color: gray;
 }
+
+.star {
+  cursor: pointer;
+  color: #ccc;
+  transition: 0.2s;
+}
+.star.hover,
+.star.selected {
+  color: var(--accent); 
+}
+
 
 @media screen and (max-width: 768px) {
   .md\:fs-80 {

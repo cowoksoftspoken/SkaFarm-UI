@@ -10,6 +10,11 @@ const produkUnggulan = [
     ulasan: 127,
     kategori: "Alat Pembantu",
     gambar: "./assets/sekop-garpu.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 2,
@@ -22,6 +27,11 @@ const produkUnggulan = [
     ulasan: 92,
     kategori: "Alat Pembantu",
     gambar: "./assets/singkal.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 3,
@@ -34,6 +44,11 @@ const produkUnggulan = [
     ulasan: 243,
     kategori: "Sayuran",
     gambar: "./assets/wortel.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 4,
@@ -46,6 +61,11 @@ const produkUnggulan = [
     ulasan: 56,
     kategori: "Sayuran",
     gambar: "./assets/sawi.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
 ];
 
@@ -60,8 +80,12 @@ const produkPetani = [
     rating: 5,
     ulasan: 415,
     kategori: "Bahan Pokok",
-    gambar:
+    gambar: "./assets/images-removebg-preview.png",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
       "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 6,
@@ -74,6 +98,11 @@ const produkPetani = [
     ulasan: 178,
     kategori: "Sayuran",
     gambar: "./assets/bayam.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 7,
@@ -86,6 +115,11 @@ const produkPetani = [
     ulasan: 56,
     kategori: "Sayuran",
     gambar: "./assets/sawi.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
   {
     id: 8,
@@ -98,12 +132,15 @@ const produkPetani = [
     ulasan: 189,
     kategori: "Alat Pembantu",
     gambar: "./assets/cangkul.jpg",
+    thumbnail: [
+      "./assets/bayam.jpg",
+      "./assets/singkal.jpg",
+      "./assets/images-removebg-preview.png",
+    ],
   },
 ];
 
 const semuaProduk = [...produkUnggulan, ...produkPetani];
-const searchPopup = document.getElementById("searchPopup")
-const popupRefer = document.getElementById("popupRefer")
 
 function tampilkanBintang(rating) {
   let star = "";
@@ -125,115 +162,132 @@ const formatRupiah = new Intl.NumberFormat("id-ID", {
   minimumFractionDigits: 0,
 });
 
-searchPopup.addEventListener("click", function(){
-   popupRefer.classList.toggle("d-none")
-})
+function buatProdukCard(produk) {
+  return `
+      <div class="col-6 col-md-4 col-lg-3" data-produk-id="${produk.id}">
+        <div class="card product-card h-85 shadow">
+          <div class="w-100 position-relative">
+            <img src="${produk.gambar}" class="card-img-top product-img" alt="${
+    produk.nama
+  }" />
+            <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">
+              ${produk.kategori}
+            </span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title product-title">${produk.nama}</h5>
+            <p class="product-price">${formatRupiah.format(produk.harga)}</p>
+            <p class="product-location">
+              <i class="fa-solid fa-location-dot text-success"></i> ${
+                produk.lokasi
+              }
+            </p>
+            <p class="product-rating">
+              ${tampilkanBintang(produk.rating)}
+              <span class="ms-1">(${produk.ulasan})</span>
+            </p>
+            <p class="text-sm text-gray">Stok: ${produk.stok} | Terjual: ${
+    produk.terjual
+  }</p>
+          </div>
+        </div>
+      </div>
+    `;
+}
+
+function tampilkanProduk(listProduk, container) {
+  container.empty();
+  listProduk.forEach((produk) => {
+    container.append(buatProdukCard(produk));
+  });
+}
 
 $(document).ready(function () {
   const containerProdukUnggulan = $("#produkUnggulan");
   const containerProdukPetani = $("#produkPetani");
   const containerSemuaProduk = $("#semuaProduk");
 
-  produkUnggulan.map((produk) => {
-    const cardProdukUnggulan = `
-        <div class="col-6 col-md-4 col-lg-3">
-          <div class="card product-card h-85 shadow">
-            <div class="w-100 relative">
-            <img
-              src="${produk.gambar}"
-              class="card-img-top product-img" 
-              alt="${produk.nama}"
-              />
-               <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
-                 produk.kategori
-               }</span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title product-title">${produk.nama}</h5>
-              <p class="product-price">${formatRupiah.format(produk.harga)}</p>
-              <p class="product-location"><i class="fa-solid fa-location-dot text-success"></i>
-                ${produk.lokasi}
-              </p>
-              <p class="product-rating">
-                ${tampilkanBintang(produk.rating)}
-                <span class="ms-1">(${produk.ulasan})</span>
-              <p class="text-sm text-gray">Stok: ${produk.stok} | Terjual: ${
-      produk.terjual
-    }</p>
-              </p>
-            </div>
-          </div>
-          </div>
-          `;
-    containerProdukUnggulan.append(cardProdukUnggulan);
-  });
-  produkPetani.forEach((produk) => {
-    const cardProdukPetani = `
-            <div class="col-6 col-md-4 col-lg-3">
-              <div class="card product-card h-85 shadow">
-                <div class="w-100 position-relative">
-                  <img
-                  src="${produk.gambar}"
-                  class="card-img-top product-img"
-                  alt="${produk.nama}" />
-                  <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
-                    produk.kategori
-                  }</span>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title product-title">
-                 ${produk.nama} 
-                  </h5>
-                  <p class="product-price">${formatRupiah.format(
-                    produk.harga
-                  )}</p>
-                  <p class="product-location"><i class="fa-solid fa-location-dot text-success"></i>${
-                    produk.lokasi
-                  }</p>
-                  <p class="product-rating">
-                    ${tampilkanBintang(produk.rating)}
-                    <span class="ms-1">(${produk.ulasan})</span>
-                  <p class="text-sm text-gray">Stok: ${
-                    produk.stok
-                  } | Terjual: ${produk.terjual}</p>
-                  </p>
-                </div>
-              </div>
-            </div>
-            `;
-    containerProdukPetani.append(cardProdukPetani);
-  });
-  semuaProduk.forEach((produk) => {
-    const card = `
-      <div class="col-6 col-md-4 col-lg-3" data-produk-id="${produk.id}">
-          <div class="card product-card h-85 shadow">
-            <div class="w-100 relative">
-            <img
-              src="${produk.gambar}"
-              class="card-img-top product-img"
-              alt="${produk.nama}" />
-               <span class="badge bg-success-subtle text-success fw-semibold mb-2 position-absolute" style="top: 0; right: 0;">${
-                 produk.kategori
-               }</span>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title product-title">${produk.nama}</h5>
-              <p class="product-price">${formatRupiah.format(produk.harga)}</p>
-              <p class="product-location"><i class="fa-solid fa-location-dot text-success"></i>
-                ${produk.lokasi}
-              </p>
-              <p class="product-rating">
-                ${tampilkanBintang(produk.rating)}
-                <span class="ms-1">(${produk.ulasan})</span>
-              <p class="text-sm text-gray">Stok: ${produk.stok} | Terjual: ${
-      produk.terjual
-    }</p>
-              </p>
-            </div>
-          </div>
-          </div>
-          `;
-    containerSemuaProduk.append(card);
+  tampilkanProduk(produkUnggulan, containerProdukUnggulan);
+  tampilkanProduk(produkPetani, containerProdukPetani);
+  tampilkanProduk(semuaProduk, containerSemuaProduk);
+
+  localStorage.setItem("dataProduk", JSON.stringify(semuaProduk));
+
+  $(document).on("click", ".product-card", function () {
+    const id = $(this).closest("[data-produk-id]").data("produk-id");
+    window.location.href = `/detailProduct.html?id=${id}`;
   });
 });
 
+$(document).ready(function () {
+  const popup = $("#popupRefer");
+  const searchBtn = $("#searchPopupBtn");
+
+  searchBtn.on("click", function (e) {
+    e.stopPropagation();
+    popup.toggleClass("show");
+  });
+
+  $(window).on("resize", function () {
+    if ($(this).width() >= 560) {
+      popup.removeClass("show");
+    }
+  });
+
+  $(document).on("click", function (e) {
+    if (!$(e.target).closest("#popupRefer, #searchPopupBtn").length) {
+      popup.removeClass("show");
+    }
+  });
+});
+
+$("#filterForm").on("submit", function (event) {
+  event.preventDefault();
+  const hargaMinimal = parseInt($("#hargaMin").val()) || 0;
+  const hargaMaximal = parseInt($("#hargaMax").val()) || Infinity;
+  const ratingMinimal = parseFloat($("#ratingMin").val()) || 0;
+  const urutkanBerdasarkan = $("#sortBy").val();
+  let hasilFilter = semuaProduk.filter((produk) => {
+    return (
+      produk.harga >= hargaMinimal &&
+      produk.harga <= hargaMaximal &&
+      produk.rating >= ratingMinimal
+    );
+  });
+
+  switch (urutkanBerdasarkan) {
+    case "termurah":
+      hasilFilter.sort((a, b) => a.harga - b.harga);
+      break;
+    case "termahal":
+      hasilFilter.sort((a, b) => b.harga - a.harga);
+      break;
+    case "terlaris":
+      hasilFilter.sort((a, b) => b.terjual - a.terjual);
+      break;
+    case "rating":
+      hasilFilter.sort((a, b) => b.rating - a.rating);
+      break;
+  }
+
+  tampilkanProduk(hasilFilter, $("#semuaProduk"));
+
+  const popup = bootstrap.Modal.getInstance(
+    document.getElementById("filterModal")
+  );
+  popup.hide();
+});
+
+$("#resetFilter").on("click", function () {
+  $("#hargaMin").val("");
+  $("#hargaMax").val("");
+  $("#ratingMin").val("0");
+  $("#sortBy").val("terbaru");
+
+  tampilkanProduk(semuaProduk, $("#semuaProduk"));
+
+  const modal = bootstrap.Modal.getInstance(
+    document.getElementById("filterModal")
+  );
+  modal.hide();
+});

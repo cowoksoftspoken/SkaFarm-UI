@@ -26,8 +26,9 @@
       <a class="navbar-brand" href="index.html">
         <i class="fas fa-leaf me-2"></i>SkaFarm
       </a>
+      <!-- Mobile Only -->
       <div class="d-flex align-items-center d-lg-none">
-        <button class="btn me-2" id="searchPopup" type="submit">
+        <button class="btn me-2" id="searchPopupBtn" type="button">
           <i class="fas fa-search"></i>
         </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -106,7 +107,8 @@
     </div>
   </nav>
 
-  <div id="popupRefer" class="position-fixed w-100" class="d-none">
+  <!-- Mobile Only -->
+  <div id="popupRefer" class="position-fixed w-100">
     <div class="tail"></div>
     <div class="position-absolute search-popup align-items-center shadow d-flex">
       <input class="form-control me-2 search-bar" type="search" name="searchInput"
@@ -116,6 +118,7 @@
       </button>
     </div>
   </div>
+
 
   <!-- Hero Section -->
   <section class="hero-section d-flex align-items-center" id="beranda">
@@ -250,9 +253,10 @@
       <div class="row mb-4">
         <div class="col-12 d-flex justify-content-between align-items-center">
           <h3 class="fw-bold">Temukan Kebutuhan Kamu</h3>
-          <a href="#" class="btn text-decoration-none" style="font-size: 1.5rem;" title="Filter">
+          <button href="#" class="btn text-decoration-none" style="font-size: 1.5rem;" title="Filter"
+            data-bs-toggle="modal" data-bs-target="#filterModal">
             <i class="fa-solid fa-filter"></i>
-          </a>
+          </button>
         </div>
       </div>
       <div class="row g-4" id="semuaProduk">
@@ -372,6 +376,58 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModalLabel">Filter Produk</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <form id="filterForm">
+            <div class="mb-3">
+              <label class="form-label">Harga (Rp)</label>
+              <div class="d-flex gap-2">
+                <input type="number" class="form-control" id="hargaMin" placeholder="Min">
+                <input type="number" class="form-control" id="hargaMax" placeholder="Max">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Rating Minimal</label>
+              <select class="form-select" id="ratingMin">
+                <option value="0">Semua</option>
+                <option value="1">1 bintang ke atas</option>
+                <option value="2">2 bintang ke atas</option>
+                <option value="3">3 bintang ke atas</option>
+                <option value="4">4 bintang ke atas</option>
+                <option value="5">5 bintang</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Urutkan</label>
+              <select class="form-select" id="sortBy">
+                <option value="terbaru">Terbaru</option>
+                <option value="termurah">Harga Termurah</option>
+                <option value="termahal">Harga Termahal</option>
+                <option value="terlaris">Terlaris</option>
+                <option value="rating">Rating Tertinggi</option>
+              </select>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-success w-100">
+                Terapkan Filter
+              </button>
+              <button type="button" class="btn btn-outline-danger w-100" id="resetFilter">
+                Reset Filter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Produk Petani -->
   <section class="py-5" id="terlaris">
