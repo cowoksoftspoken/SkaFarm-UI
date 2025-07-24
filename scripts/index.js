@@ -215,8 +215,8 @@ $(document).ready(function () {
 
   $(document).on("click", ".product-card", function () {
     const id = $(this).closest("[data-produk-id]").data("produk-id");
-    const baseUrl = window.location.pathname.split("/")
-    window.location.href = `${baseUrl}/detailProduct.html?id=${id}`;
+    const baseUrl = window.location.pathname.split("/")[1]
+    window.location.href = `/${baseUrl}/detailProduct.html?id=${id}`;
   });
 });
 
