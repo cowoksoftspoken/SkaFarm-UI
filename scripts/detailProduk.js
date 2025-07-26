@@ -19,6 +19,12 @@ $(document).ready(function () {
   );
   $("#hargaDiskon").first().text(formatRupiah.format(produk.harga));
   $("#stok").text(`Stok: ${produk.stok} Tersedia`);
+  $("#addCart")
+    .attr("data-id", produk.id)
+    .attr("data-name", produk.nama)
+    .attr("data-store", produk.lokasi)
+    .attr("data-price", produk.harga)
+    .attr("data-img", produk.gambar);
 
   $("#produkDetail").html(`
       <div class="d-flex align-items-center gap-1">
@@ -49,6 +55,20 @@ $(document).ready(function () {
   $(document).on("click", ".image-thumbnail", function () {
     const src = $(this).attr("src");
     $(".image-utama").attr("src", src);
+  });
+
+  $(document).on("click", "#shareProduk", function () {
+    navigator
+      .share({
+        title: produk.nama,
+        url: window.location.href,
+      })
+      .then(function () {
+        console.log("Share Success");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   });
 
   $("#plus").click(function () {

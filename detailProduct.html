@@ -28,6 +28,15 @@
       </a>
       <!-- Mobile Only -->
       <div class="d-flex align-items-center d-lg-none">
+        <div class="position-relative me-2">
+          <button class="nav-link position-relative" id="openCart">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartBadge"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+              0
+            </span>
+          </button>
+        </div>
         <button class="btn me-2" id="searchPopupBtn" type="button">
           <i class="fas fa-search"></i>
         </button>
@@ -56,11 +65,6 @@
             <li class="nav-link me-2">
               <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
             </li>
-            <li class="nav-link me-2">
-              <a class="nav-link" href="#">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </li>
             <li class="nav-link me-2 dropdown position-relative">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                 <i class="fas fa-user-circle"></i>
@@ -85,9 +89,13 @@
             <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <button class="nav-link position-relative" id="openCart">
               <i class="fas fa-shopping-cart"></i>
-            </a>
+              <span id="cartBadge"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+                0
+              </span>
+            </button>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -133,8 +141,7 @@
 
     <div class="row g-3">
       <div class="col-md-6">
-        <img src=""
-          class="rounded mb-3 w-100 image-utama" alt="Gambar Utama" />
+        <img src="" class="rounded mb-3 w-100 image-utama" alt="Gambar Utama" />
         <div class="d-flex gap-1 overflow-auto image-thumbnail-container">
           <img src="" class="rounded border image-thumbnail" />
           <img src="" class="rounded border image-thumbnail" />
@@ -177,12 +184,14 @@
         </div>
 
         <div class="d-flex gap-2 mb-4">
-          <button class="btn btn-outline-success w-100">+ Keranjang</button>
+          <button class="btn btn-outline-success w-100" id="addCart">
+            <i class="fas fa-cart-plus me-2"></i>Keranjang
+          </button>
           <button class="btn btn-success w-100">Beli Sekarang</button>
           <button class="btn btn-outline-danger">
             <i class="fas fa-heart"></i>
           </button>
-          <button class="btn btn-outline-secondary">
+          <button class="btn btn-outline-secondary" id="shareProduk">
             <i class="fas fa-share"></i>
           </button>
         </div>
@@ -446,6 +455,41 @@
       </div>
     </div>
   </div>
+
+  <!-- Cart Buka Tutup -->
+  <div id="cartContainer" class="cartContainer">
+    <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+      <h5>Keranjang Belanja</h5>
+      <div>
+
+        <button id="fullScreenCart" class="btn btn-outline-secondary me-2">
+          <i class="fas fa-expand"></i>
+        </button>
+        <button id="closeCart" class="btn btn-outline-danger">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-grow-1 overflow-auto p-3">
+      <div class="d-flex justify-content-between mb-3">
+        <button id="pilihSemua" class="btn btn-sm btn-outline-success">Pilih Semua</button>
+        <button id="hapusSemua" class="btn btn-sm btn-outline-danger">Hapus Semua</button>
+      </div>
+      <div id="cartContent"></div>
+    </div>
+
+    <div class="p-3 border-top">
+      <div class="d-flex justify-content-between">
+        <span>Subtotal (<span id="jumlahTerpilih">0</span> produk)</span>
+        <span class="fw-bold">
+          Rp <span id="totalHarga">0</span>
+        </span>
+      </div>
+      <button id="checkOut" class="btn btn-success w-100 mt-2">Checkout</button>
+    </div>
+  </div>
+
 
 
   <footer class="footer">

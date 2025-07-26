@@ -202,6 +202,89 @@ function tampilkanProduk(listProduk, container) {
   });
 }
 
+function ambilKeranjang() {
+  const data = localStorage.getItem("keranjang");
+  return data ? JSON.parse(data) : [];
+}
+
+function simpanKeranjang(data) {
+  localStorage.setItem("keranjang", JSON.stringify(data));
+}
+
+function updateBadgeKeranjang() {
+  const keranjang = ambilKeranjang();
+  const jumlah = keranjang.reduce((total, item) => total + item.qty, 0);
+  const badge = $("#cartBadge");
+
+  if (jumlah > 0) {
+    badge.removeClass("d-none").text(jumlah);
+  } else {
+    badge.addClass("d-none");
+  }
+}
+
+function tampilkanKeranjang() {
+  const keranjang = ambilKeranjang();
+  let totalHarga = 0;
+  let jumlahProduk = 0;
+  let isiHTML = "";
+
+  keranjang.forEach((p) => {
+    totalHarga += p.qty * p.harga;
+    jumlahProduk += p.qty;
+
+    isiHTML += `
+      <div class="d-flex align-items-start mb-3 cart-product" data-id="${p.id}" data-price="${p.harga}">
+        <input type="checkbox" class="form-check-input me-2 cart-check" checked />
+        <img src="${p.img}" alt="${p.nama}" class="img-thumbnail me-3" style="width: 80px; height: 80px; object-fit: cover;" />
+        <div class="flex-grow-1">
+          <h6 class="mb-1">${p.nama}</h6>
+          <p class="small text-muted mb-1">
+            <i class="fas fa-location-dot text-success me-1"></i> ${p.lokasi}
+          </p>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <button class="btn btn-sm btn-outline-danger btn-delete"><i class="fas fa-trash me-1"></i> Hapus</button>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-outline-secondary btn-sm minus me-2"><i class="fas fa-minus"></i></button>
+              <span class="count">${p.qty}</span>
+              <button class="btn btn-outline-secondary btn-sm plus ms-2"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  updateBadgeKeranjang();
+  $("#cartContent").html(isiHTML);
+  $("#jumlahTerpilih").text(jumlahProduk);
+  $("#totalHarga").text(totalHarga.toLocaleString("id-ID"));
+}
+
+function updateTotal() {
+  let total = 0,
+    count = 0;
+  $("#cartContent .cart-product").each(function () {
+    const checked = $(this).find(".cart-check").prop("checked");
+    if (checked) {
+      count++;
+      const price = parseInt($(this).data("price"));
+      const qty = parseInt($(this).find(".count").text());
+      total += price * qty;
+    }
+  });
+
+  $("#totalHarga").text(total.toLocaleString("id-ID"));
+  $("#jumlahTerpilih").text(count);
+  $("#checkOut")
+    .prop("disabled", count === 0)
+    .text(count > 0 ? `Checkout (${count})` : "Checkout");
+}
+
+function getProductId(element) {
+  return parseInt($(element).closest(".cart-product").data("id"));
+}
+
 $(document).ready(function () {
   const containerProdukUnggulan = $("#produkUnggulan");
   const containerProdukPetani = $("#produkPetani");
@@ -217,6 +300,93 @@ $(document).ready(function () {
     const id = $(this).closest("[data-produk-id]").data("produk-id");
     const baseUrl = window.location.pathname.split("/")[1]
     window.location.href = `/${baseUrl}/detailProduct.html?id=${id}`;
+  });
+});
+
+$(document).ready(function () {
+  tampilkanKeranjang();
+});
+
+$(document).ready(function () {
+  $(document).on("click", "#openCart", function (event) {
+    event.preventDefault();
+    $("#cartContainer").toggleClass("show");
+  });
+
+  $(document).on("click", "#closeCart", function () {
+    $("#cartContainer").removeClass("show");
+  });
+
+  $(document).on("click", "#fullScreenCart", function () {
+    $("#cartContainer").toggleClass("fullScreen");
+  });
+
+  $(document).on("click", "#addCart", function () {
+    const id = parseInt($(this).data("id"));
+    const nama = $(this).data("name");
+    const lokasi = $(this).data("store");
+    const harga = parseInt($(this).data("price"));
+    const img = $(this).data("img");
+
+    let keranjang = ambilKeranjang();
+    const udahAda = keranjang.find((item) => item.id === id);
+    if (udahAda) {
+      udahAda.qty += 1;
+    } else {
+      keranjang.push({ id, nama, lokasi, harga, img, qty: 1 });
+    }
+
+    simpanKeranjang(keranjang);
+    tampilkanKeranjang();
+    $("#cartContainer").addClass("show");
+  });
+
+  $(document).on("click", ".plus", function () {
+    const id = parseInt($(this).closest(".cart-product").data("id"));
+    const keranjang = ambilKeranjang();
+    const produk = keranjang.find((item) => item.id === id);
+    if (produk) produk.qty += 1;
+    simpanKeranjang(keranjang);
+    tampilkanKeranjang();
+  });
+
+  $(document).on("click", ".minus", function () {
+    const id = parseInt($(this).closest(".cart-product").data("id"));
+    const keranjang = ambilKeranjang();
+    const produk = keranjang.find((item) => item.id === id);
+    if (produk && produk.qty > 1) {
+      produk.qty -= 1;
+      simpanKeranjang(keranjang);
+      tampilkanKeranjang();
+    }
+  });
+
+  $(document).on("click", ".btn-delete", function(){
+     const id = parseInt($(this).closest(".cart-product").data("id"));
+     let keranjang = ambilKeranjang();
+     keranjang = keranjang.filter(k => k.id !== id)
+     simpanKeranjang(keranjang)
+     tampilkanKeranjang()
+  })
+
+  $(document).on("change", ".cart-check", function () {
+    const id = getProductId(this);
+    const keranjang = ambilKeranjang();
+    const item = keranjang.find((p) => p.id === id);
+    item.checked = $(this).is(":checked");
+    updateTotal();
+  });
+
+  $("#pilihSemua").click(() => {
+    const keranjang = ambilKeranjang();
+    const semuaDicentang = keranjang.every((p) => p.checked);
+    keranjang.forEach((p) => (p.checked = !semuaDicentang));
+    tampilkanKeranjang();
+  });
+
+  $("#hapusSemua").click(() => {
+    localStorage.removeItem("keranjang");
+    tampilkanKeranjang();
   });
 });
 
@@ -287,8 +457,8 @@ $("#resetFilter").on("click", function () {
 
   tampilkanProduk(semuaProduk, $("#semuaProduk"));
 
-  const modal = bootstrap.Modal.getInstance(
+  const popup = bootstrap.Modal.getInstance(
     document.getElementById("filterModal")
   );
-  modal.hide();
+  popup.hide();
 });
