@@ -291,6 +291,55 @@ body {
   cursor: pointer;
 }
 
+/* Search Suggest */
+#saranSearchDesktop,
+#saranSearchMobile {
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: var(--light);
+  animation: fastDisplay 0.2s ease-in-out;
+  z-index: 9999;
+}
+
+#saranSearchDesktop {
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-radius: 8px;
+  margin-top: 4px; 
+}
+
+#saranSearchMobile {
+  margin-top: 4px;
+}
+
+#saranSearchDesktop li,
+#saranSearchMobile li {
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: background 0.2s;
+}
+
+#saranSearchMobile li:hover,
+#saranSearchMobile li:hover {
+  background: #f1f1f1;
+}
+
+@keyframes fastDisplay {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Query */
 @media screen and (max-width: 768px) {
   .md\:fs-80 {
     font-size: 90%;

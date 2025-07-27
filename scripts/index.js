@@ -164,7 +164,9 @@ const formatRupiah = new Intl.NumberFormat("id-ID", {
 
 function buatProdukCard(produk) {
   return `
-      <div class="col-6 col-md-4 col-lg-3" data-produk-id="${produk.id}">
+      <div class="col-6 col-md-4 col-lg-3 cursor-pointer" data-produk-id="${
+        produk.id
+      }">
         <div class="card product-card h-85 shadow">
           <div class="w-100 position-relative">
             <img src="${produk.gambar}" class="card-img-top product-img" alt="${
@@ -200,6 +202,31 @@ function tampilkanProduk(listProduk, container) {
   listProduk.forEach((produk) => {
     container.append(buatProdukCard(produk));
   });
+}
+
+function tampilkanSaran(keyword, selector) {
+  const hasil = semuaProduk
+    .filter((produk) =>
+      produk.nama.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
+    )
+    .slice(0, 5);
+  const list = $(selector);
+  list.empty();
+
+  if (hasil.length === 0 || keyword.length === 0) {
+    list.addClass("d-none");
+    return;
+  }
+
+  hasil.forEach((produk) => {
+    list.append(`
+      <li class="list-group-item list-group-item-action" data-id="${produk.id}" style="background: var(--light)">
+        ${produk.nama}
+      </li>
+    `);
+  });
+
+  list.removeClass("d-none");
 }
 
 function ambilKeranjang() {
@@ -298,7 +325,7 @@ $(document).ready(function () {
 
   $(document).on("click", ".product-card", function () {
     const id = $(this).closest("[data-produk-id]").data("produk-id");
-    const baseUrl = window.location.pathname.split("/")[1]
+    const baseUrl = window.location.pathname.split("/")[1];
     window.location.href = `/${baseUrl}/detailProduct.html?id=${id}`;
   });
 });
@@ -361,13 +388,13 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on("click", ".btn-delete", function(){
-     const id = parseInt($(this).closest(".cart-product").data("id"));
-     let keranjang = ambilKeranjang();
-     keranjang = keranjang.filter(k => k.id !== id)
-     simpanKeranjang(keranjang)
-     tampilkanKeranjang()
-  })
+  $(document).on("click", ".btn-delete", function () {
+    const id = parseInt($(this).closest(".cart-product").data("id"));
+    let keranjang = ambilKeranjang();
+    keranjang = keranjang.filter((k) => k.id !== id);
+    simpanKeranjang(keranjang);
+    tampilkanKeranjang();
+  });
 
   $(document).on("change", ".cart-check", function () {
     const id = getProductId(this);
@@ -387,6 +414,41 @@ $(document).ready(function () {
   $("#hapusSemua").click(() => {
     localStorage.removeItem("keranjang");
     tampilkanKeranjang();
+  });
+});
+
+$(document).ready(function () {
+  $("#inputSearchDesktop").on("input", function () {
+    const keyword = $(this).val().trim();
+    tampilkanSaran(keyword, "#saranSearchDesktop");
+  });
+
+  $("#saranSearchDesktop").on("click", "li", function () {
+    const id = $(this).data("id");
+    const baseUrl = window.location.pathname.split("/")[1];
+    window.location.href = `/${baseUrl}/detailProduct.html?id=${id}`;
+  });
+
+  $("#inputSearchMobile").on("input", function () {
+    const keyword = $(this).val().trim();
+    tampilkanSaran(keyword, "#saranSearchMobile");
+  });
+
+  $("#saranSearchMobile").on("click", "li", function () {
+    const id = $(this).data("id");
+    const baseUrl = window.location.pathname.split("/")[1];
+    window.location.href = `/${baseUrl}/detailProduct.html?id=${id}`;
+  });
+
+  $(document).on("click", function (e) {
+    if (
+      !$(e.target).closest("#inputSearchDesktop,#saranSearchDesktop").length
+    ) {
+      $("#saranSearchDesktop").addClass("d-none");
+    }
+    if (!$(e.target).closest("#inputSearchMobile, #saranSearchMobile").length) {
+      $("#saranSearchMobile").addClass("d-none");
+    }
   });
 });
 
