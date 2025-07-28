@@ -22,7 +22,7 @@ $(document).ready(function () {
   $("#addCart")
     .attr("data-id", produk.id)
     .attr("data-name", produk.nama)
-    .attr("data-store", produk.lokasi)
+    .attr("data-location", produk.lokasi)
     .attr("data-price", produk.harga)
     .attr("data-img", produk.gambar);
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
      <span class="text-gray">(${produk.ulasan} ulasan)</span>
     </div>
       <span class="mx-2">•</span>
-      <span>${produk.terjual} terjual</span>
+      <span>${produk.terjual} Terjual</span>
     `);
 
   $(".breadcrumb-item").eq(2).text(produk.kategori);

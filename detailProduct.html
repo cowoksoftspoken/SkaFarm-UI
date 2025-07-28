@@ -78,52 +78,57 @@
                 <li><a class="dropdown-item" href="#">Keluar</a></li>
           </div>
         </ul>
-        <div class="d-lg-flex d-none">
-          <input class="form-control me-2 search-bar" type="search" placeholder="Cari produk pertanian..." />
-          <button class="btn search-btn" type="submit">
+        <div class="d-lg-flex d-none position-relative">
+          <input class="form-control me-2 search-bar" id="inputSearchDesktop" type="search"
+            placeholder="Cari produk pertanian..." />
+          <button class="btn search-btn" id="btnSearchDesktop" type="submit">
             <i class="fas fa-search"></i>
           </button>
+          <ul id="saranSearchDesktop" class="list-group position-absolute z-3 shadow-sm mt-1 d-none"></ul>
         </div>
-        <ul class="navbar-nav d-none d-lg-flex ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link position-relative" id="openCart">
-              <i class="fas fa-shopping-cart"></i>
-              <span id="cartBadge"
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
-                0
-              </span>
-            </button>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              <i class="fas fa-user-circle"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Akun Saya</a></li>
-              <li><a class="dropdown-item" href="#">Pesanan</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Keluar</a></li>
-            </ul>
-          </li>
-        </ul>
       </div>
+      <ul class="navbar-nav d-none d-lg-flex ms-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link position-relative" id="openCart">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cartBadge"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none">
+              0
+            </span>
+          </button>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-user-circle"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Akun Saya</a></li>
+            <li><a class="dropdown-item" href="#">Pesanan</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Keluar</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
     </div>
   </nav>
 
   <!-- Mobile Only -->
   <div id="popupRefer" class="position-fixed w-100">
     <div class="tail"></div>
-    <div class="position-absolute search-popup align-items-center shadow d-flex">
-      <input class="form-control me-2 search-bar" type="search" name="searchInput"
-        placeholder="Cari produk pertanian..." />
-      <button class="btn search-btn search-btn-hover" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
+    <div class="position-absolute search-popup">
+      <div class="d-flex align-items-center">
+        <input class="form-control me-2 search-bar" type="search" name="searchInput" id="inputSearchMobile" placeholder="Cari produk pertanian..." />
+        <button class="btn search-btn search-btn-hover" type="submit" id="btnSearchMobile">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+      <ul id="saranSearchMobile" class="list-group z-3 shadow-sm mt-1 position-relative"></ul>
     </div>
   </div>
 

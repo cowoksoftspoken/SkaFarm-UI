@@ -207,7 +207,7 @@ function tampilkanProduk(listProduk, container) {
 function tampilkanSaran(keyword, selector) {
   const hasil = semuaProduk
     .filter((produk) =>
-      produk.nama.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
+      produk.nama.toLowerCase().includes(keyword.toLowerCase())
     )
     .slice(0, 5);
   const list = $(selector);
@@ -351,7 +351,7 @@ $(document).ready(function () {
   $(document).on("click", "#addCart", function () {
     const id = parseInt($(this).data("id"));
     const nama = $(this).data("name");
-    const lokasi = $(this).data("store");
+    const lokasi = $(this).data("location");
     const harga = parseInt($(this).data("price"));
     const img = $(this).data("img");
 
@@ -394,6 +394,7 @@ $(document).ready(function () {
     keranjang = keranjang.filter((k) => k.id !== id);
     simpanKeranjang(keranjang);
     tampilkanKeranjang();
+    updateTotal()
   });
 
   $(document).on("change", ".cart-check", function () {
@@ -409,11 +410,13 @@ $(document).ready(function () {
     const semuaDicentang = keranjang.every((p) => p.checked);
     keranjang.forEach((p) => (p.checked = !semuaDicentang));
     tampilkanKeranjang();
+    updateTotal()
   });
 
   $("#hapusSemua").click(() => {
     localStorage.removeItem("keranjang");
     tampilkanKeranjang();
+    updateTotal()
   });
 });
 
