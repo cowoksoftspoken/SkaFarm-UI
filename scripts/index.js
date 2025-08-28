@@ -256,6 +256,16 @@ function tampilkanKeranjang() {
   let jumlahProduk = 0;
   let isiHTML = "";
 
+  if (keranjang.length === 0) {
+    isiHTML = `<p class="text-center text-muted">Keranjang kosong</p>`;
+    updateBadgeKeranjang();
+    $("#cartContent").html(isiHTML);
+    $("#jumlahTerpilih").text(0);
+    $("#totalHarga").text("0");
+    $("#checkOut").prop("disabled", true).text("Checkout");
+    return;
+  }
+
   keranjang.forEach((p) => {
     totalHarga += p.qty * p.harga;
     jumlahProduk += p.qty;
@@ -394,7 +404,7 @@ $(document).ready(function () {
     keranjang = keranjang.filter((k) => k.id !== id);
     simpanKeranjang(keranjang);
     tampilkanKeranjang();
-    updateTotal()
+    updateTotal();
   });
 
   $(document).on("change", ".cart-check", function () {
@@ -410,13 +420,13 @@ $(document).ready(function () {
     const semuaDicentang = keranjang.every((p) => p.checked);
     keranjang.forEach((p) => (p.checked = !semuaDicentang));
     tampilkanKeranjang();
-    updateTotal()
+    updateTotal();
   });
 
   $("#hapusSemua").click(() => {
     localStorage.removeItem("keranjang");
     tampilkanKeranjang();
-    updateTotal()
+    updateTotal();
   });
 });
 

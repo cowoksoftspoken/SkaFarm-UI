@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="sm:fs-70 md:fs-80 lg:fs-normal">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lihat Semua | Produk</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-leaf me-2"></i>SkaFarm
+        </a>
+        <!-- Mobile Only -->
+        <div class="d-flex align-items-center d-lg-none">
+          <div class="position-relative me-2">
+            <button class="nav-link position-relative" id="openCart">
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                id="cartBadge"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+              >
+                0
+              </span>
+            </button>
+          </div>
+          <button class="btn me-2" id="searchPopupBtn" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#beranda">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#produk">Produk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#promo">Promo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentangKami">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#terlaris">Produk Terlaris</a>
+            </li>
+
+            <!-- Mobile Only extra menu -->
+            <div class="d-flex align-items-center g-2 d-lg-none">
+              <li class="nav-link me-2">
+                <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+              </li>
+              <li class="nav-link me-2 dropdown position-relative">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="fas fa-user-circle"></i>
+                </a>
+                <ul class="dropdown-menu position-absolute dropdown-menu-start">
+                  <li><a class="dropdown-item" href="#">Akun Saya</a></li>
+                  <li><a class="dropdown-item" href="#">Pesanan</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Keluar</a></li>
+                </ul>
+              </li>
+            </div>
+          </ul>
+
+          <div class="d-lg-flex d-none position-relative">
+            <input
+              class="form-control me-2 search-bar"
+              id="inputSearchDesktop"
+              type="search"
+              placeholder="Cari produk pertanian..."
+            />
+            <button class="btn search-btn" id="btnSearchDesktop" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            <ul
+              id="saranSearchDesktop"
+              class="list-group position-absolute z-3 shadow-sm mt-1 d-none"
+            ></ul>
+          </div>
+
+          <ul class="navbar-nav d-none d-lg-flex ms-3">
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link position-relative" id="openCart">
+                <i class="fas fa-shopping-cart"></i>
+                <span
+                  id="cartBadge"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                  >0</span
+                >
+              </button>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user-circle"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Akun Saya</a></li>
+                <li><a class="dropdown-item" href="#">Pesanan</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Keluar</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Only -->
+    <div id="popupRefer" class="position-fixed w-100">
+      <div class="tail"></div>
+      <div class="position-absolute search-popup">
+        <div class="d-flex align-items-center">
+          <input
+            class="form-control me-2 search-bar"
+            type="search"
+            name="searchInput"
+            id="inputSearchMobile"
+            placeholder="Cari produk pertanian..."
+          />
+          <button
+            class="btn search-btn search-btn-hover"
+            type="submit"
+            id="btnSearchMobile"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <ul
+          id="saranSearchMobile"
+          class="list-group z-3 shadow-sm mt-1 position-relative"
+        ></ul>
+      </div>
+    </div>
+    <main class="my-4">
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-2"
+        >
+          <h2 class="fw-bold mb-0">Semua Produk</h2>
+          <div class="d-flex gap-2">
+            <button
+              class="btn text-decoration-none d-flex align-items-center"
+              style="font-size: 1rem"
+              title="Kembali Ke Beranda"
+              id="KembaliKeBeranda"
+            >
+              <i class="fa-solid fa-arrow-left me-2"></i>
+              Kembali Ke Beranda
+            </button>
+            <button
+              class="btn text-decoration-none d-flex align-items-center"
+              style="font-size: 1rem"
+              title="Filter"
+              data-bs-toggle="modal"
+              data-bs-target="#filterModal"
+            >
+              <i class="fa-solid fa-filter me-2"></i>
+              Filter
+            </button>
+          </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="productContainer">
+          <!-- Produk akan dimuat di sini melalui JavaScript -->
+        </div>
+      </div>
+    </main>
+    <!-- Popup Filter -->
+    <div
+      class="modal fade"
+      id="filterModal"
+      tabindex="-1"
+      aria-labelledby="filterModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow">
+          <div class="modal-header">
+            <h5 class="modal-title" id="filterModalLabel">Filter Produk</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Tutup"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="filterForm">
+              <div class="mb-3">
+                <label class="form-label">Harga (Rp)</label>
+                <div class="d-flex gap-2">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hargaMin"
+                    placeholder="Min"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hargaMax"
+                    placeholder="Max"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Rating Minimal</label>
+                <select class="form-select" id="ratingMin">
+                  <option value="0">Semua</option>
+                  <option value="1">1 bintang ke atas</option>
+                  <option value="2">2 bintang ke atas</option>
+                  <option value="3">3 bintang ke atas</option>
+                  <option value="4">4 bintang ke atas</option>
+                  <option value="5">5 bintang</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Urutkan</label>
+                <select class="form-select" id="sortBy">
+                  <option value="terbaru">Terbaru</option>
+                  <option value="termurah">Harga Termurah</option>
+                  <option value="termahal">Harga Termahal</option>
+                  <option value="terlaris">Terlaris</option>
+                  <option value="rating">Rating Tertinggi</option>
+                </select>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success w-100">
+                  Terapkan Filter
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger w-100"
+                  id="resetFilter"
+                >
+                  Reset Filter
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Buka Tutup -->
+    <div id="cartContainer" class="cartContainer">
+      <div
+        class="d-flex justify-content-between align-items-center p-3 border-bottom"
+      >
+        <h5>Keranjang Belanja</h5>
+        <div>
+          <button id="fullScreenCart" class="btn btn-outline-secondary me-2">
+            <i class="fas fa-expand"></i>
+          </button>
+          <button id="closeCart" class="btn btn-outline-danger">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex-grow-1 overflow-auto p-3">
+        <div class="d-flex justify-content-between mb-3">
+          <button id="pilihSemua" class="btn btn-sm btn-outline-success">
+            Pilih Semua
+          </button>
+          <button id="hapusSemua" class="btn btn-sm btn-outline-danger">
+            Hapus Semua
+          </button>
+        </div>
+        <div id="cartContent"></div>
+      </div>
+
+      <div class="p-3 border-top">
+        <div class="d-flex justify-content-between">
+          <span>Subtotal (<span id="jumlahTerpilih">0</span> produk)</span>
+          <span class="fw-bold"> Rp <span id="totalHarga">0</span> </span>
+        </div>
+        <button id="checkOut" class="btn btn-success w-100 mt-2">
+          Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mb-4 mb-md-0">
+            <h5 class="footer-title">SkaFarm</h5>
+            <p>
+              Marketplace pertanian modern yang menghubungkan petani dengan
+              konsumen secara langsung.
+            </p>
+            <div class="mt-3">
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-decoration-none text-white"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4 mb-md-0">
+            <h5 class="footer-title">Tentang Kami</h5>
+            <a href="#" class="footer-link">Profil Perusahaan</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Karir</a>
+            <a href="#" class="footer-link">Kebijakan Privasi</a>
+          </div>
+          <div class="col-md-3 mb-4 mb-md-0">
+            <h5 class="footer-title">Beli</h5>
+            <a href="#" class="footer-link">Kategori Produk</a>
+            <a href="#" class="footer-link">Promo</a>
+            <a href="#" class="footer-link">Produk Baru</a>
+            <a href="#" class="footer-link">Petani Terdekat</a>
+          </div>
+          <div class="col-md-3">
+            <h5 class="footer-title">Hubungi Kami</h5>
+            <a href="#" class="footer-link"
+              ><i class="fas fa-phone me-2"></i> 1500 123</a
+            >
+            <a href="#" class="footer-link"
+              ><i class="fas fa-envelope me-2"></i> help@skafarm.id</a
+            >
+            <a href="#" class="footer-link"
+              ><i class="fas fa-map-marker-alt me-2"></i> Jakarta, Indonesia</a
+            >
+          </div>
+        </div>
+        <hr class="my-4 bg-secondary" />
+        <div class="row">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <p class="mb-0">© 2025 SkaFarm All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom Js -->
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/semuaProduct.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
