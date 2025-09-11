@@ -207,7 +207,7 @@ body {
 
 /* Others */
 .image-utama {
-  object-fit: contain;
+  object-fit: cover;
   max-height: 400px;
 }
 
