@@ -11,6 +11,10 @@ $(document).ready(function () {
       "<div class='alert alert-danger'>Produk Tidak Ditemukan</div>"
     );
 
+  function updateAddCartQty(qty) {
+    $("#addCart").attr("data-quantity", qty);
+  }
+
   $(".image-utama").attr("src", produk.gambar).attr("alt", produk.nama);
   $("#judulProduk").text(produk.nama);
   $(".breadcrumb-item.active").text(produk.nama);
@@ -75,6 +79,7 @@ $(document).ready(function () {
     const val = parseInt($("#inputProduk").val()) || 1;
     if (val < produk.stok) {
       $("#inputProduk").val(val + 1);
+      updateAddCartQty(val + 1);
     }
   });
 
@@ -82,6 +87,7 @@ $(document).ready(function () {
     const val = parseInt($("#inputProduk").val()) || 1;
     if (val > 1) {
       $("#inputProduk").val(val - 1);
+      updateAddCartQty(val - 1);
     }
   });
 

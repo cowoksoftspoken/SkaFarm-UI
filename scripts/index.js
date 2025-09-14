@@ -467,6 +467,7 @@ function tampilkanKeranjang() {
   $("#cartContent").html(isiHTML);
   $("#jumlahTerpilih").text(jumlahProduk);
   $("#totalHarga").text(totalHarga.toLocaleString("id-ID"));
+  updateTotal();
 }
 
 function updateTotal() {
@@ -535,18 +536,20 @@ $(document).ready(function () {
     const lokasi = $(this).data("location");
     const harga = parseInt($(this).data("price"));
     const img = $(this).data("img");
+    const qty = parseInt($(this).data("quantity"));
 
     let keranjang = ambilKeranjang();
     const udahAda = keranjang.find((item) => item.id === id);
     if (udahAda) {
       udahAda.qty += 1;
     } else {
-      keranjang.push({ id, nama, lokasi, harga, img, qty: 1 });
+      keranjang.push({ id, nama, lokasi, harga, img, qty: qty || 1 });
     }
 
     simpanKeranjang(keranjang);
     tampilkanKeranjang();
     $("#cartContainer").addClass("show");
+    updateTotal();
   });
 
   $(document).on("click", ".plus", function () {
@@ -575,7 +578,6 @@ $(document).ready(function () {
     keranjang = keranjang.filter((k) => k.id !== id);
     simpanKeranjang(keranjang);
     tampilkanKeranjang();
-    updateTotal();
   });
 
   $(document).on("change", ".cart-check", function () {

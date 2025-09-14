@@ -249,6 +249,51 @@ body {
   color: var(--accent);
 }
 
+.btn-animated {
+  position: relative;
+  padding: 6px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  overflow: hidden;
+}
+
+.btn-animated::before,
+.btn-animated::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: #333;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.btn-animated::before {
+  transform-origin: left;
+  top: 0;
+}
+
+.btn-animated::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+.btn-animated:hover::before,
+.btn-animated:focus::before,
+.btn-animated:active::before {
+  transform: scaleX(1);
+}
+
+.btn-animated:hover::after,
+.btn-animated:focus::after,
+.btn-animated:active::after {
+  transform: scaleX(1);
+}
+
 /* Cart */
 .cartContainer {
   position: fixed;
