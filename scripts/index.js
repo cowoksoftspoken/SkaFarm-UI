@@ -536,14 +536,14 @@ $(document).ready(function () {
     const lokasi = $(this).data("location");
     const harga = parseInt($(this).data("price"));
     const img = $(this).data("img");
-    const qty = parseInt($(this).data("quantity"));
+    const qty = parseInt($(this).attr("data-quantity")) || 1;
 
     let keranjang = ambilKeranjang();
     const udahAda = keranjang.find((item) => item.id === id);
     if (udahAda) {
-      udahAda.qty += 1;
+      udahAda.qty += qty;
     } else {
-      keranjang.push({ id, nama, lokasi, harga, img, qty: qty || 1 });
+      keranjang.push({ id, nama, lokasi, harga, img, qty: qty });
     }
 
     simpanKeranjang(keranjang);
