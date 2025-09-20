@@ -317,11 +317,11 @@ function tampilkanBintang(rating) {
   let star = "";
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(rating)) {
-      star += '<i class="fas fa-star"></i>';
+      star += '<i class="bi bi-star-fill text-warning"></i>';
     } else if (i - rating < 1) {
-      star += '<i class="fas fa-star-half-alt"></i>';
+      star += '<i class="bi bi-star-half text-warning"></i>';
     } else {
-      star += '<i class="far fa-star"></i>';
+      star += '<i class="bi bi-star text-warning"></i>';
     }
   }
   return star;
@@ -351,9 +351,7 @@ function buatProdukCard(produk) {
             <h5 class="card-title product-title">${produk.nama}</h5>
             <p class="product-price">${formatRupiah.format(produk.harga)}</p>
             <p class="product-location">
-              <i class="fa-solid fa-location-dot text-success"></i> ${
-                produk.lokasi
-              }
+              <i class="bi bi-geo-alt-fill text-success"></i> ${produk.lokasi}
             </p>
             <p class="product-rating">
               ${tampilkanBintang(produk.rating)}
@@ -448,14 +446,14 @@ function tampilkanKeranjang() {
         <div class="flex-grow-1">
           <h6 class="mb-1">${p.nama}</h6>
           <p class="small text-muted mb-1">
-            <i class="fas fa-location-dot text-success me-1"></i> ${p.lokasi}
+            <i class="bi bi-geo-alt-fill text-success me-1"></i> ${p.lokasi}
           </p>
           <div class="d-flex align-items-center justify-content-between mb-2">
-            <button class="btn btn-sm btn-outline-danger btn-delete"><i class="fas fa-trash me-1"></i> Hapus</button>
+            <button class="btn btn-sm btn-outline-danger btn-delete"><i class="bi bi-trash me-1"></i> Hapus</button>
             <div class="d-flex align-items-center">
-              <button class="btn btn-outline-secondary btn-sm minus me-2"><i class="fas fa-minus"></i></button>
+              <button class="btn btn-outline-secondary btn-sm minus me-2"><i class="bi bi-dash"></i></button>
               <span class="count">${p.qty}</span>
-              <button class="btn btn-outline-secondary btn-sm plus ms-2"><i class="fas fa-plus"></i></button>
+              <button class="btn btn-outline-secondary btn-sm plus ms-2"><i class="bi bi-plus-lg"></i></button>
             </div>
           </div>
         </div>
