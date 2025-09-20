@@ -19,7 +19,7 @@ $(document).ready(function () {
   $("#judulProduk").text(produk.nama);
   $(".breadcrumb-item.active").text(produk.nama);
   $(".product-location").html(
-    `<i class="fas fa-location-dot text-success"></i> ${produk.lokasi}`
+    `<i class="bi bi-geo-alt-fill text-success"></i> ${produk.lokasi}`
   );
   $("#hargaDiskon").first().text(formatRupiah.format(produk.harga));
   $("#stok").text(`Stok: ${produk.stok} Tersedia`);
