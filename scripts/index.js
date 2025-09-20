@@ -520,6 +520,11 @@ $(document).ready(function () {
     $("#cartContainer").toggleClass("show");
   });
 
+  $(document).on("click", "#checkOut", function () {
+    const baseUrl = window.location.pathname.split("/")[1];
+    window.location.href = `${baseUrl}/pembayaran.html`;
+  });
+
   $(document).on("click", "#closeCart", function () {
     $("#cartContainer").removeClass("show");
   });

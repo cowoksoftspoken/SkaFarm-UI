@@ -118,6 +118,11 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on("click", "#buyNow", function () {
+    const baseUrl = window.location.pathname.split("/")[1];
+    window.location.href = `${baseUrl}/pembayaran.html`;
+  });
+
   $("#formUlasan").on("submit", function (e) {
     e.preventDefault();
 
