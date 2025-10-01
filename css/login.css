@@ -1,0 +1,43 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(rgba(58, 125, 68, 0.8), rgba(58, 125, 68, 0.8)),
+    url("../assets/background-sawah.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.auth-card h3 {
+  font-weight: 600;
+}
+.toggle-pass {
+  cursor: pointer;
+  position: absolute;
+  right: 12px;
+  top: 74%;
+  transform: translateY(-50%);
+  color: gray;
+}
+.form-group {
+  position: relative;
+}
+.logo {
+  font-size: 2.5rem;
+  color: #198754;
+}
+.switch-link {
+  color: #198754;
+  font-weight: 500;
+  cursor: pointer;
+}
+.switch-link:hover {
+  text-decoration: underline;
+}
